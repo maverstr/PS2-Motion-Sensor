@@ -56,9 +56,9 @@ void draw()
       posx = Integer.valueOf(splitted[0]);
          posy = - Integer.valueOf(splitted[1]);
          posz = Integer.valueOf(splitted[2]);*/
-        posx = float(splitted[0]) / 10;
-        posy = - float(splitted[1]) / 10;
-        posz = float(splitted[2]) / 400;
+        posx = float(splitted[0]) / 20;
+        posy = - float(splitted[1]) / 20;
+        posz = (float(splitted[2]) /13000)*2*PI;
       }
       catch(Exception e) {
         print("error : ");
@@ -77,6 +77,8 @@ void draw()
     posy = 0;
     previousx = 0;
     previousy=0;
+    posz=0;
+    previousz=0;
     background(200);
   }
 }
@@ -96,5 +98,5 @@ void keyPressed()
 
 void lineAngle(int x, int y, float angle, float length)
 {
-  line(x, y, x+cos(angle+90)*length, y-sin(angle+90)*length);
+  line(x, y, x+cos(angle-0)*length, y-sin(angle-0)*length);
 }

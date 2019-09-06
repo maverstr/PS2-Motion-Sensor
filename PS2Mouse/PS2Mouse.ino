@@ -35,7 +35,7 @@ float vector[2];
 int x, y, x2, z;
 
 bool rotation = true;
-bool polar = true;
+bool polar = false;
 
 Coordinates polarCoord = Coordinates();
 
@@ -51,12 +51,12 @@ void setup() {
 
 void loop() {
   uint8_t stat, stat2;
-  mouse.getPosition(stat, x, y);
-  mouse2.getPosition(stat2, x2, z);
+  mouse.getPosition(stat, x, z);
+  mouse2.getPosition(stat2, y, x2);
   
   previousx = posx;
   previousy = posy;
-  previousy2 = posy2;
+  //previousy2 = posy2;
   previousz = posz;
 
   posz = previousz + (float)z;
@@ -68,11 +68,11 @@ void loop() {
   }
   posx = previousx + (float)x;
   posy = previousy + (float)y;
-  posy2 = previousy2 + (float)x2; //in its reference, x of mouse2 is y in mouse1.
+  //posy2 = previousy2 + (float)x2; //in its reference, x of mouse2 is y in mouse1.
   
   Serial.print(posx);
   Serial.print(" ");
-  Serial.print(posy);
+  Serial.print(-posy);
   Serial.print(" ");
   Serial.print(posz);
   Serial.print(" ");
@@ -98,8 +98,8 @@ void loop() {
 
 void toVector(float x, float y, float z) {
   //rotates the vector around the z axis to follow the path
-  float rotatedX = (float) (x * cos(z / 360) - y * sin(z / 360));
-  float rotatedY = (float) (x * sin(z / 360) + y * cos(z / 360));
+  float rotatedX = (float) (x * cos((z / 13000)*2*PI) - y * sin((z / 13000)*2*PI)); //one full ball rotation = 13000
+  float rotatedY = (float) (x * sin((z / 13000)*2*PI) + y * cos((z / 13000)*2*PI));
   float rotatedVector[2];
   vector[0] = rotatedX;
   vector[1] = rotatedY;
