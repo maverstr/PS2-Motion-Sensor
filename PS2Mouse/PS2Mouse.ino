@@ -42,8 +42,7 @@ Coordinates polarCoord = Coordinates();
 void setup() {
   Serial.begin(500000);
   while (!Serial);
-  Serial.print("Setup...");
-
+  Serial.print("Motion sensor Setup...");
   mouse.begin();
   mouse2.begin();
   Serial.println("complete!");
@@ -56,7 +55,6 @@ void loop() {
   
   previousx = posx;
   previousy = posy;
-  //previousy2 = posy2;
   previousz = posz;
 
   posz = previousz + (float)z;
@@ -68,7 +66,6 @@ void loop() {
   }
   posx = previousx + (float)x;
   posy = previousy + (float)y;
-  //posy2 = previousy2 + (float)x2; //in its reference, x of mouse2 is y in mouse1.
   
   Serial.print(posx);
   Serial.print(" ");

@@ -47,15 +47,10 @@ void draw()
     String value = mySerial.readStringUntil(10); //lf
     if (value != null) {
       try {
-        //value = value.substring(0, value.length()-1);
         String[] splitted = split(value, ' ');
         previousx = posx;
         previousy = posy;
         previousz = posz;
-        /*
-      posx = Integer.valueOf(splitted[0]);
-         posy = - Integer.valueOf(splitted[1]);
-         posz = Integer.valueOf(splitted[2]);*/
         posx = float(splitted[0]) / 20;
         posy = - float(splitted[1]) / 20;
         posz = (float(splitted[2]) /13000)*2*PI;
@@ -98,5 +93,6 @@ void keyPressed()
 
 void lineAngle(int x, int y, float angle, float length)
 {
-  line(x, y, x+cos(angle-0)*length, y-sin(angle-0)*length);
+  print(angle);
+  line(x, y, x+cos(angle-(PI/2))*length, y+sin(angle-(PI/2))*length);
 }
