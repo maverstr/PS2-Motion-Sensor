@@ -1,0 +1,3 @@
+[submodule "UserGuide-MotionSensor"]
+	path = UserGuide-MotionSensor
+	url = https://github.com/maverstr/UserGuide-MotionSensor
