@@ -32,7 +32,7 @@ float previousz = posz;
 
 float vector[2];
 
-int x, y, x2, z;
+int x, y, z, z2;
 
 bool rotation = true;
 bool polar = false;
@@ -51,7 +51,7 @@ void setup() {
 void loop() {
   uint8_t stat, stat2;
   mouse.getPosition(stat, x, z);
-  mouse2.getPosition(stat2, y, x2);
+  mouse2.getPosition(stat2, y, z2);
   
   previousx = posx;
   previousy = posy;
